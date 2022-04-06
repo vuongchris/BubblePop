@@ -16,6 +16,10 @@
 		112C1B3B27F6AA03001C8BAF /* BubblePopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112C1B3A27F6AA03001C8BAF /* BubblePopTests.swift */; };
 		112C1B4527F6AA03001C8BAF /* BubblePopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112C1B4427F6AA03001C8BAF /* BubblePopUITests.swift */; };
 		112C1B4727F6AA03001C8BAF /* BubblePopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112C1B4627F6AA03001C8BAF /* BubblePopUITestsLaunchTests.swift */; };
+		11A23AE527FD415200692BAC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A23AE427FD415200692BAC /* SettingViewController.swift */; };
+		11A23AE727FD416500692BAC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A23AE627FD416500692BAC /* GameViewController.swift */; };
+		11A23AE927FD417100692BAC /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A23AE827FD417100692BAC /* HighScoreViewController.swift */; };
+		11A23AEB27FD418400692BAC /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A23AEA27FD418400692BAC /* Bubble.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		112C1B4027F6AA03001C8BAF /* BubblePopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubblePopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		112C1B4427F6AA03001C8BAF /* BubblePopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblePopUITests.swift; sourceTree = "<group>"; };
 		112C1B4627F6AA03001C8BAF /* BubblePopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblePopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		11A23AE427FD415200692BAC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		11A23AE627FD416500692BAC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		11A23AE827FD417100692BAC /* HighScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
+		11A23AEA27FD418400692BAC /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,9 @@
 		112C1B1727F6AA01001C8BAF = {
 			isa = PBXGroup;
 			children = (
+				11A23AE327FD409D00692BAC /* View */,
+				11A23AE227FD408F00692BAC /* Controller */,
+				11A23AE127FD408200692BAC /* Model */,
 				112C1B2227F6AA01001C8BAF /* BubblePop */,
 				112C1B3927F6AA03001C8BAF /* BubblePopTests */,
 				112C1B4327F6AA03001C8BAF /* BubblePopUITests */,
@@ -102,7 +113,6 @@
 				112C1B2327F6AA01001C8BAF /* AppDelegate.swift */,
 				112C1B2527F6AA01001C8BAF /* SceneDelegate.swift */,
 				112C1B2727F6AA01001C8BAF /* ViewController.swift */,
-				112C1B2927F6AA01001C8BAF /* Main.storyboard */,
 				112C1B2C27F6AA02001C8BAF /* Assets.xcassets */,
 				112C1B2E27F6AA02001C8BAF /* LaunchScreen.storyboard */,
 				112C1B3127F6AA02001C8BAF /* Info.plist */,
@@ -125,6 +135,32 @@
 				112C1B4627F6AA03001C8BAF /* BubblePopUITestsLaunchTests.swift */,
 			);
 			path = BubblePopUITests;
+			sourceTree = "<group>";
+		};
+		11A23AE127FD408200692BAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11A23AEA27FD418400692BAC /* Bubble.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		11A23AE227FD408F00692BAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				11A23AE427FD415200692BAC /* SettingViewController.swift */,
+				11A23AE627FD416500692BAC /* GameViewController.swift */,
+				11A23AE827FD417100692BAC /* HighScoreViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		11A23AE327FD409D00692BAC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				112C1B2927F6AA01001C8BAF /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A23AE727FD416500692BAC /* GameViewController.swift in Sources */,
 				112C1B2827F6AA01001C8BAF /* ViewController.swift in Sources */,
 				112C1B2427F6AA01001C8BAF /* AppDelegate.swift in Sources */,
 				112C1B2627F6AA01001C8BAF /* SceneDelegate.swift in Sources */,
+				11A23AEB27FD418400692BAC /* Bubble.swift in Sources */,
+				11A23AE527FD415200692BAC /* SettingViewController.swift in Sources */,
+				11A23AE927FD417100692BAC /* HighScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

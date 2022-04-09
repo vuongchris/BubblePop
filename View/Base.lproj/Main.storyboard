@@ -71,7 +71,7 @@
         <!--High Score-->
         <scene sceneID="7FG-Rd-cml">
             <objects>
-                <viewController id="LtI-cO-ozd" sceneMemberID="viewController">
+                <viewController id="LtI-cO-ozd" customClass="HighScoreViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0S-3F-RjA">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
         <!--Setting-->
         <scene sceneID="gyU-NJ-RgX">
             <objects>
-                <viewController id="kBb-2P-Q7Y" sceneMemberID="viewController">
+                <viewController id="kBb-2P-Q7Y" customClass="SettingViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WA2-Bg-RRI">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
         <!--Game-->
         <scene sceneID="wWk-j7-qwX">
             <objects>
-                <viewController id="e83-94-Cph" sceneMemberID="viewController">
+                <viewController id="e83-94-Cph" customClass="GameViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="n5g-Vh-D1X">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,6 +200,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Game" id="heI-4u-jg6"/>
+                    <connections>
+                        <outlet property="currentScoreLabel" destination="XDz-MW-g9W" id="qhR-d1-Nnc"/>
+                        <outlet property="highScoreLabel" destination="EDC-Rd-jIF" id="M4O-pK-TDY"/>
+                        <outlet property="remainingTimeLabel" destination="5N5-7H-zjs" id="e9F-fp-TAd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPk-qQ-IK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

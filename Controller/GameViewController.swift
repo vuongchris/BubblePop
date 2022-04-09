@@ -36,7 +36,6 @@ class GameViewController: UIViewController {
         
         if remainingTime == 0 {
             timer.invalidate()
-            print("Time is over!")
         }
     }
 

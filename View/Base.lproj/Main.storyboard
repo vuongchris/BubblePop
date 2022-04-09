@@ -140,6 +140,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="LfW-1A-6pf"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="VZn-Rh-bOb" id="6Nb-ad-g7c"/>
+                        <outlet property="numOfBubblesSlider" destination="bct-DP-1ju" id="msd-0Y-fZ1"/>
+                        <outlet property="timeSlider" destination="KZp-fc-Fpm" id="N5l-vy-cTF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBx-ag-sJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

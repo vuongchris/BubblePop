@@ -40,7 +40,7 @@ class GameViewController: UIViewController {
             
             let vc = storyboard?.instantiateViewController(identifier: "HighScoreViewController") as! HighScoreViewController
             self.navigationController?.pushViewController(vc, animated: true)
-            vc.navigationItem.setHidesBackButton(true, animated: true)
+            // vc.navigationItem.setHidesBackButton(true, animated: true)
         }
     }
     

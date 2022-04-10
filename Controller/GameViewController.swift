@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     
     var remainingTime = 60
     var timer = Timer()
+    var numOfBubbles = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,9 @@ class GameViewController: UIViewController {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
-            self.generateBubble()
             self.countingDown()
+            self.generateBubble()
+
         }
         
     }

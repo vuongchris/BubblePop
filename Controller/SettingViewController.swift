@@ -24,6 +24,7 @@ class SettingViewController: UIViewController {
         if segue.identifier == "goToGame" {
             let VC = segue.destination as! GameViewController
             VC.remainingTime = Int(timeSlider.value)
+            VC.numOfBubbles = Int(numOfBubblesSlider.value)
         }
     }
 }

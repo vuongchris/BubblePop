@@ -130,7 +130,7 @@
                                     <constraint firstAttribute="width" constant="200" id="BSG-jg-Ap4"/>
                                 </constraints>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="bct-DP-1ju">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="1" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="bct-DP-1ju">
                                 <rect key="frame" x="112" y="448.66666666666669" width="204" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="cZb-5b-Rao"/>

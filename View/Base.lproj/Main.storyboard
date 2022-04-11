@@ -75,8 +75,23 @@
                     <view key="view" contentMode="scaleToFill" id="c0S-3F-RjA">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9q-fV-9mP">
+                                <rect key="frame" x="64" y="747" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="agk-UJ-HXX"/>
+                                    <constraint firstAttribute="height" constant="50" id="bOi-f8-V8R"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Main"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="XFQ-n7-7dc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K9q-fV-9mP" firstAttribute="centerX" secondItem="c0S-3F-RjA" secondAttribute="centerX" id="Gtf-iI-0mW"/>
+                            <constraint firstItem="K9q-fV-9mP" firstAttribute="top" secondItem="XFQ-n7-7dc" secondAttribute="top" constant="659" id="dtq-kF-IGR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="High Score" id="VwK-5w-j0J"/>
                 </viewController>

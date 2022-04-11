@@ -27,8 +27,7 @@ class GameViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.countingDown()
-            self.generateBubble()
-
+            self.generateBubble(bubbles: self.numOfBubbles)
         }
         
     }
@@ -42,15 +41,17 @@ class GameViewController: UIViewController {
             
             let vc = storyboard?.instantiateViewController(identifier: "HighScoreViewController") as! HighScoreViewController
             self.navigationController?.pushViewController(vc, animated: true)
-            // vc.navigationItem.setHidesBackButton(true, animated: true)
+            vc.navigationItem.setHidesBackButton(true, animated: true)
         }
     }
     
-    @objc func generateBubble() {
-        let bubble = Bubble()
-        bubble.animation()
-        bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
-        self.view.addSubview(bubble)
+    @objc func generateBubble(bubbles: Int) {
+        for _ in stride(from: 0, to: bubbles, by: 1) {
+            var bubble = Bubble()
+            bubble.animation()
+            bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
+            self.view.addSubview(bubble)
+        }
     }
     
     @IBAction func bubblePressed(_ sender: UIButton) {

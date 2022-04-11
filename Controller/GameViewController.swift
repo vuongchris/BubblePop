@@ -47,11 +47,15 @@ class GameViewController: UIViewController {
     
     @objc func generateBubble(bubbles: Int) {
         for _ in stride(from: 0, to: bubbles, by: 1) {
-            var bubble = Bubble()
+            let bubble = Bubble()
             bubble.animation()
             bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
             self.view.addSubview(bubble)
         }
+    }
+    
+    @objc func removeRandomBubble() {
+        
     }
     
     @IBAction func bubblePressed(_ sender: UIButton) {

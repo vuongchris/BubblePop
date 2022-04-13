@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
     var timer = Timer()
     var numOfBubbles = 15
     var currentScore = 0
+    var previousBubbleColor = "white"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,17 +62,62 @@ class GameViewController: UIViewController {
     
     @objc func updateCurrentScore(_ sender: UIButton) {
         if sender.backgroundColor == .red {
-            currentScore += 1
+            redBubbleScore(previousBubbleColor)
         } else if sender.backgroundColor == .magenta {
-            currentScore += 2
+            magentaBubbleScore(previousBubbleColor)
         } else if sender.backgroundColor == .green {
-            currentScore += 5
+            greenBubbleScore(previousBubbleColor)
         } else if sender.backgroundColor == .blue {
-            currentScore += 8
+            blueBubbleScore(previousBubbleColor)
         } else if sender.backgroundColor == .black {
-            currentScore += 10
+            blackBubbleScore(previousBubbleColor)
         }
         currentScoreLabel.text = String(currentScore)
+    }
+    
+    @objc func redBubbleScore(_ previousColor: String) {
+        if previousColor == "red" {
+            currentScore += Int(round(1 * 1.5))
+        } else {
+            currentScore += 1
+            previousBubbleColor = "red"
+        }
+    }
+    
+    @objc func magentaBubbleScore(_ previousColor: String) {
+        if previousColor == "magenta" {
+            currentScore += Int(round(2 * 1.5))
+        } else {
+            currentScore += 1
+            previousBubbleColor = "magenta"
+        }
+    }
+    
+    @objc func greenBubbleScore(_ previousColor: String) {
+        if previousColor == "green" {
+            currentScore += Int(round(5 * 1.5))
+        } else {
+            currentScore += 1
+            previousBubbleColor = "green"
+        }
+    }
+    
+    @objc func blueBubbleScore(_ previousColor: String) {
+        if previousColor == "blue" {
+            currentScore += Int(round(8 * 1.5))
+        } else {
+            currentScore += 1
+            previousBubbleColor = "blue"
+        }
+    }
+    
+    @objc func blackBubbleScore(_ previousColor: String) {
+        if previousColor == "black" {
+            currentScore += Int(round(10 * 1.5))
+        } else {
+            currentScore += 1
+            previousBubbleColor = "black"
+        }
     }
     
     @IBAction func bubblePressed(_ sender: UIButton) {

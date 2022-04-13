@@ -48,7 +48,7 @@ class GameViewController: UIViewController {
     }
     
     @objc func generateBubble(bubbles: Int) {
-        for _ in stride(from: 0, to: bubbles, by: 1) {
+        for _ in stride(from: 0, to: Int.random(in: 0...bubbles), by: 1) {
             let bubble = Bubble()
             bubble.animation()
             bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)

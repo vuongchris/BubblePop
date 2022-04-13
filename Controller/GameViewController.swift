@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     var remainingTime = 60
     var timer = Timer()
     var numOfBubbles = 15
+    var currentScore = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +59,25 @@ class GameViewController: UIViewController {
         
     }
     
+    @objc func updateCurrentScore(_ sender: UIButton) {
+        if sender.backgroundColor == .red {
+            currentScore += 1
+        } else if sender.backgroundColor == .magenta {
+            currentScore += 2
+        } else if sender.backgroundColor == .green {
+            currentScore += 5
+        } else if sender.backgroundColor == .blue {
+            currentScore += 8
+        } else if sender.backgroundColor == .black {
+            currentScore += 10
+        }
+        currentScoreLabel.text = String(currentScore)
+    }
+    
     @IBAction func bubblePressed(_ sender: UIButton) {
         // remove pressed bubble from view
         sender.removeFromSuperview()
+        updateCurrentScore(sender)
     }
     
 }

@@ -18,13 +18,13 @@ class Bubble: UIButton {
         super.init(frame: frame)
         switch randomInt {
             case 0..<40:
-                self.backgroundColor = .systemRed
+                self.backgroundColor = .red
             case 40..<70:
                 self.backgroundColor = .magenta
             case 70..<85:
-                self.backgroundColor = .systemGreen
+                self.backgroundColor = .green
             case 85..<95:
-                self.backgroundColor = .systemBlue
+                self.backgroundColor = .blue
             default:
                 self.backgroundColor = .black
         }

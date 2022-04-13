@@ -31,6 +31,8 @@ class HighScoreViewController: UIViewController {
             $0.score > $1.score
         }
         
+        writeHighScores()
+        
         self.highScores = readHighScores()
     }
     

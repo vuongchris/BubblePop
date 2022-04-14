@@ -15,6 +15,9 @@ struct GameScore: Codable {
 
 let KEY_HIGH_SCORE = "highScore"
 
+var currentPlayerName = "Unknown"
+var currentGameScore = 100
+
 class HighScoreViewController: UIViewController {
 
     var highScores: [GameScore] = []
@@ -27,22 +30,21 @@ class HighScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        highScores.sort {
-            $0.score > $1.score
-        }
         
         writeHighScores()
         
         self.highScores = readHighScores()
+        
+        highScores.sort {
+            $0.score > $1.score
+        }
     }
     
     func writeHighScores() {
         let defaults = UserDefaults.standard;
         
         let updatedHighSoreFromGame = [
-            GameScore(name: "Jack", score: 100),
-            GameScore(name: "Hua", score: 79),
-            GameScore(name: "Daniel", score: 120)
+            GameScore(name: "Chris", score: 100)
         ]
         
         defaults.set(try? PropertyListEncoder().encode(updatedHighSoreFromGame), forKey: KEY_HIGH_SCORE)
@@ -84,7 +86,7 @@ extension HighScoreViewController: UITableViewDataSource {
         let score = highScores[indexPath.row]
         
         cell.textLabel?.text = score.name
-        cell.detailTextLabel?.text = "score.score"
+        cell.detailTextLabel?.text = String(score.score)
         
         return cell
     }

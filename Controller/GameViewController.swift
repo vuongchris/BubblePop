@@ -26,6 +26,8 @@ class GameViewController: UIViewController {
         
         remainingTimeLabel.text = String(remainingTime)
         
+        self.generateBubble(bubbles: self.numOfBubbles)
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.countingDown()

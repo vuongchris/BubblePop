@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var currentScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     
+    var name: String?
     var remainingTime = 60
     var timer = Timer()
     var numOfBubbles = 15

@@ -37,6 +37,7 @@ class GameViewController: UIViewController {
         
     }
     
+    // Countdown timer and once the time runs out go to HighScoreViewController
     @objc func countingDown() {
         remainingTime -= 1
         remainingTimeLabel.text = String(remainingTime)
@@ -50,6 +51,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Generates a random number of bubbles
     @objc func generateBubble(bubbles: Int) {
         for _ in stride(from: 0, to: Int.random(in: 0...bubbles), by: 1) {
             let bubble = Bubble()
@@ -59,10 +61,12 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Removes a random number of bubbles
     @objc func removeRandomBubble() {
         
     }
     
+    // Checks what bubble was pressed by the user and updates the score
     @objc func updateCurrentScore(_ sender: UIButton) {
         if sender.backgroundColor == .red {
             redBubbleScore(previousBubbleColor)
@@ -78,6 +82,7 @@ class GameViewController: UIViewController {
         currentScoreLabel.text = String(currentScore)
     }
     
+    // Adds red bubble score value to current game score
     @objc func redBubbleScore(_ previousColor: String) {
         if previousColor == "red" {
             currentScore += Int(round(1 * 1.5))
@@ -87,6 +92,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Adds magenta bubble score value to current game score
     @objc func magentaBubbleScore(_ previousColor: String) {
         if previousColor == "magenta" {
             currentScore += Int(round(2 * 1.5))
@@ -96,6 +102,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Adds green bubble score value to current game score
     @objc func greenBubbleScore(_ previousColor: String) {
         if previousColor == "green" {
             currentScore += Int(round(5 * 1.5))
@@ -105,6 +112,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Adds blue bubble score value to current game score
     @objc func blueBubbleScore(_ previousColor: String) {
         if previousColor == "blue" {
             currentScore += Int(round(8 * 1.5))
@@ -114,6 +122,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Adds black bubble score value to current game score
     @objc func blackBubbleScore(_ previousColor: String) {
         if previousColor == "black" {
             currentScore += Int(round(10 * 1.5))
@@ -123,6 +132,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Removes bubble selected by the user and updates the score
     @IBAction func bubblePressed(_ sender: UIButton) {
         // remove pressed bubble from view
         sender.removeFromSuperview()

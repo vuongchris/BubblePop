@@ -15,13 +15,11 @@ struct GameScore: Codable {
 
 let KEY_HIGH_SCORE = "highScore"
 
-var currentPlayerName = "Unknown"
-var currentGameScore = 100
-
 class HighScoreViewController: UIViewController {
 
     var highScores: [GameScore] = []
-    
+    var currentPlayerName = "Unknown"
+    var currentGameScore = 100
     
     
     @IBOutlet weak var highScoreTableView: UITableView!
@@ -44,7 +42,7 @@ class HighScoreViewController: UIViewController {
         let defaults = UserDefaults.standard;
         
         let updatedHighSoreFromGame = [
-            GameScore(name: "Chris", score: 100)
+            GameScore(name: currentPlayerName, score: currentGameScore)
         ]
         
         defaults.set(try? PropertyListEncoder().encode(updatedHighSoreFromGame), forKey: KEY_HIGH_SCORE)
@@ -64,6 +62,9 @@ class HighScoreViewController: UIViewController {
         }
     }
 
+    @IBAction func returnToMainPage(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension HighScoreViewController: UITableViewDelegate {

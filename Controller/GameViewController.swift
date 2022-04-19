@@ -46,6 +46,9 @@ class GameViewController: UIViewController {
             timer.invalidate()
             
             let vc = storyboard?.instantiateViewController(identifier: "HighScoreViewController") as! HighScoreViewController
+            vc.currentGameScore = currentScore
+            vc.currentPlayerName = name!
+            vc.newScore = true
             self.navigationController?.pushViewController(vc, animated: true)
             vc.navigationItem.setHidesBackButton(true, animated: true)
             

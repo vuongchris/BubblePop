@@ -13,13 +13,14 @@ struct GameScore: Codable {
     var score: Int
 }
 
-let KEY_HIGH_SCORE = "highScore"
+let KEY_HIGH_SCORE = "highScores"
 
 class HighScoreViewController: UIViewController {
 
     var highScores: [GameScore] = []
     var currentPlayerName = "Unknown"
     var currentGameScore = 100
+    var newScore = false
     
     
     @IBOutlet weak var highScoreTableView: UITableView!
@@ -29,7 +30,9 @@ class HighScoreViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        writeHighScores()
+        if newScore == true {
+            writeHighScores()
+        }
         
         self.highScores = readHighScores()
         
@@ -39,17 +42,18 @@ class HighScoreViewController: UIViewController {
     }
     
     func writeHighScores() {
-        let defaults = UserDefaults.standard;
+        let defaults = UserDefaults.standard
         
-        let updatedHighSoreFromGame = [
+        
+        let updatedHighScoreFromGame = [
             GameScore(name: currentPlayerName, score: currentGameScore)
         ]
         
-        defaults.set(try? PropertyListEncoder().encode(updatedHighSoreFromGame), forKey: KEY_HIGH_SCORE)
+        defaults.set(try? PropertyListEncoder().encode(updatedHighScoreFromGame), forKey: KEY_HIGH_SCORE)
     }
     
     func readHighScores() -> [GameScore] {
-        let defaults = UserDefaults.standard;
+        let defaults = UserDefaults.standard
         
         if let savedArrayData = defaults.value(forKey:KEY_HIGH_SCORE) as? Data {
             if let array = try? PropertyListDecoder().decode(Array<GameScore>.self, from: savedArrayData) {

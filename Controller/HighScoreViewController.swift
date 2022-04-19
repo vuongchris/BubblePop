@@ -49,6 +49,8 @@ class HighScoreViewController: UIViewController {
             GameScore(name: currentPlayerName, score: currentGameScore)
         ]
         
+        highScores.append(contentsOf: [GameScore(name: currentPlayerName, score: currentGameScore)])
+        
         defaults.set(try? PropertyListEncoder().encode(updatedHighScoreFromGame), forKey: KEY_HIGH_SCORE)
     }
     

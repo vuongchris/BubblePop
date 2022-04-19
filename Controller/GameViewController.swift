@@ -101,7 +101,7 @@ class GameViewController: UIViewController {
         if previousColor == "magenta" {
             currentScore += Int(round(2 * 1.5))
         } else {
-            currentScore += 1
+            currentScore += 2
             previousBubbleColor = "magenta"
         }
     }
@@ -111,7 +111,7 @@ class GameViewController: UIViewController {
         if previousColor == "green" {
             currentScore += Int(round(5 * 1.5))
         } else {
-            currentScore += 1
+            currentScore += 5
             previousBubbleColor = "green"
         }
     }
@@ -121,7 +121,7 @@ class GameViewController: UIViewController {
         if previousColor == "blue" {
             currentScore += Int(round(8 * 1.5))
         } else {
-            currentScore += 1
+            currentScore += 8
             previousBubbleColor = "blue"
         }
     }
@@ -131,7 +131,7 @@ class GameViewController: UIViewController {
         if previousColor == "black" {
             currentScore += Int(round(10 * 1.5))
         } else {
-            currentScore += 1
+            currentScore += 10
             previousBubbleColor = "black"
         }
     }

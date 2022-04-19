@@ -44,20 +44,16 @@ class HighScoreViewController: UIViewController {
     func writeHighScores() {
         let defaults = UserDefaults.standard
         
+        highScores = readHighScores()
         
-        let updatedHighScoreFromGame = [
-            GameScore(name: currentPlayerName, score: currentGameScore)
-        ]
-        
-        highScores.append(contentsOf: [GameScore(name: currentPlayerName, score: currentGameScore)])
-        
-        defaults.set(try? PropertyListEncoder().encode(updatedHighScoreFromGame), forKey: KEY_HIGH_SCORE)
+        highScores.append(GameScore(name: currentPlayerName, score: currentGameScore))
+        defaults.set(try? PropertyListEncoder().encode(highScores), forKey: KEY_HIGH_SCORE)
     }
     
     func readHighScores() -> [GameScore] {
         let defaults = UserDefaults.standard
         
-        if let savedArrayData = defaults.value(forKey:KEY_HIGH_SCORE) as? Data {
+        if let savedArrayData = defaults.object(forKey:KEY_HIGH_SCORE) as? Data {
             if let array = try? PropertyListDecoder().decode(Array<GameScore>.self, from: savedArrayData) {
                 return array
             } else {

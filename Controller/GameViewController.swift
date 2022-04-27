@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.countingDown()
-            self.removeRandomBubbles()
+            self.removeRandomBubbles(bubbles: self.numOfBubbles)
             self.generateBubble(bubbles: self.numOfBubbles)
         }
         
@@ -62,11 +62,15 @@ class GameViewController: UIViewController {
     // Generates a random number of bubbles
     @objc func generateBubble(bubbles: Int) {
         for _ in stride(from: 0, to: Int.random(in: 0...bubbles), by: 1) {
-            let bubble = Bubble()
-            bubble.animation()
-            bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
-            self.view.addSubview(bubble)
-            currentBubblesOnScreen += 1
+            if currentBubblesOnScreen < numOfBubbles {
+                let bubble = Bubble()
+                bubble.animation()
+                bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
+                self.view.addSubview(bubble)
+                currentBubblesOnScreen += 1
+            } else {
+                break
+            }
         }
     }
     
@@ -76,11 +80,19 @@ class GameViewController: UIViewController {
     }
     
     // Removes a random number of bubbles
-    @objc func removeRandomBubbles() {
+    @objc func removeRandomBubbles(bubbles: Int) {
+        let randomInt = Int.random(in: 0...bubbles)
+        var cycleCount = 0
         for button in self.view.subviews {
-            if button.isKind(of: UIButton.self) {
-                button.removeFromSuperview()
+            if cycleCount < randomInt {
+                if button.isKind(of: UIButton.self) {
+                    button.removeFromSuperview()
+                    currentBubblesOnScreen -= 1
+                }
+            } else {
+                break
             }
+            cycleCount += 1
         }
     }
     

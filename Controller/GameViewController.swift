@@ -20,18 +20,22 @@ class GameViewController: UIViewController {
     var numOfBubbles = 15
     var currentScore = 0
     var previousBubbleColor = "white"
+    var currentBubblesOnScreen = 0
+    var bubbleOverlap = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         remainingTimeLabel.text = String(remainingTime)
+        highScoreLabel.text = highScoreValue()
         
         self.generateBubble(bubbles: self.numOfBubbles)
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.countingDown()
+            self.removeRandomBubbles()
             self.generateBubble(bubbles: self.numOfBubbles)
         }
         
@@ -62,12 +66,22 @@ class GameViewController: UIViewController {
             bubble.animation()
             bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
             self.view.addSubview(bubble)
+            currentBubblesOnScreen += 1
         }
     }
     
-    // Removes a random number of bubbles
-    @objc func removeRandomBubble() {
+    @objc func ifBubbleOverlap() -> Bool {
         
+        return false
+    }
+    
+    // Removes a random number of bubbles
+    @objc func removeRandomBubbles() {
+        for button in self.view.subviews {
+            if button.isKind(of: UIButton.self) {
+                button.removeFromSuperview()
+            }
+        }
     }
     
     // Checks what bubble was pressed by the user and updates the score
@@ -143,4 +157,18 @@ class GameViewController: UIViewController {
         updateCurrentScore(sender)
     }
     
+    @objc func highScoreValue() -> String {
+        let highScoreVC = HighScoreViewController()
+        var array = highScoreVC.highScores
+        
+        array.sort {
+            $0.score > $1.score
+        }
+        
+        if array.count > 0 {
+            return String(array[0].score)
+        } else {
+            return "0"
+        }
+    }
 }

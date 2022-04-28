@@ -79,7 +79,7 @@ class GameViewController: UIViewController {
                 }
                 bubble.animation()
                 bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
-                bubble.frame = CGRect(x: xPosition, y: yPosition, width: 50, height: 50)
+                bubble.frame = CGRect(x: xPosition, y: yPosition, width: 40, height: 40)
                 bubble.layer.cornerRadius = 0.5 * bubble.bounds.size.width
                 self.view.addSubview(bubble)
                 currentBubblesOnScreen += 1
@@ -92,11 +92,11 @@ class GameViewController: UIViewController {
     @objc func ifOverlap(x xPos: CGFloat, y yPos: CGFloat) -> Bool {
         for button in self.view.subviews {
             let buttonXLeftPosition: CGFloat = button.frame.origin.x
-            let buttonXRightPosition: CGFloat = button.frame.origin.x + 50
+            let buttonXRightPosition: CGFloat = button.frame.origin.x + 40
             let buttonYTopPosition: CGFloat = button.frame.origin.y
-            let buttonYBottomPosition: CGFloat = button.frame.origin.y + 50
+            let buttonYBottomPosition: CGFloat = button.frame.origin.y + 40
             
-            if (xPos >= buttonXLeftPosition - 50 && xPos <= buttonXRightPosition + 50) && (yPos >= buttonYTopPosition - 50 && yPos <= buttonYBottomPosition + 50) {
+            if (xPos >= buttonXLeftPosition - 40 && xPos <= buttonXRightPosition + 40) && (yPos >= buttonYTopPosition - 40 && yPos <= buttonYBottomPosition + 40) {
                 return true
             }
         }

@@ -195,7 +195,7 @@ class GameViewController: UIViewController {
     
     @objc func highScoreValue() -> String {
         let highScoreVC = HighScoreViewController()
-        var array = highScoreVC.highScores
+        var array = highScoreVC.readHighScores()
         
         array.sort {
             $0.score > $1.score

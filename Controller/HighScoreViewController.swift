@@ -22,7 +22,7 @@ class HighScoreViewController: UIViewController {
     var currentGameScore = 100
     var newScore = false
     
-    
+    @IBOutlet weak var gameScoreLabel: UILabel!
     @IBOutlet weak var highScoreTableView: UITableView!
     
     
@@ -32,6 +32,9 @@ class HighScoreViewController: UIViewController {
         
         if newScore == true {
             writeHighScores()
+            gameScoreLabel.text = "Your Score: \(currentGameScore)"
+        } else {
+            gameScoreLabel.isHidden = true
         }
         
         self.highScores = readHighScores()

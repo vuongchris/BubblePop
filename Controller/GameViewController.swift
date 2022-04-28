@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 class GameViewController: UIViewController {
 
@@ -21,7 +22,7 @@ class GameViewController: UIViewController {
     var currentScore = 0
     var previousBubbleColor = "white"
     var currentBubblesOnScreen = 0
-    var bubbleOverlap = false
+    var bubbleOverlap = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +62,25 @@ class GameViewController: UIViewController {
     
     // Generates a random number of bubbles
     @objc func generateBubble(bubbles: Int) {
-        for _ in stride(from: 0, to: Int.random(in: 0...bubbles), by: 1) {
+        for _ in stride(from: 1, through: Int.random(in: 2...bubbles), by: 1) {
             if currentBubblesOnScreen < numOfBubbles {
                 let bubble = Bubble()
+                var xPosition = CGFloat.random(in: 10...CGFloat(UIScreen.main.bounds.size.width * 0.8))
+                var yPosition = CGFloat.random(in: 130...CGFloat(UIScreen.main.bounds.size.height * 0.9))
+                bubbleOverlap = true
+                while bubbleOverlap != false {
+                    if ifOverlap(x: xPosition, y: yPosition) {
+                        xPosition = CGFloat.random(in: 10...CGFloat(UIScreen.main.bounds.size.width * 0.7))
+                        yPosition = CGFloat.random(in: 130...CGFloat(UIScreen.main.bounds.size.height * 0.8))
+                        bubbleOverlap = true
+                    } else {
+                        bubbleOverlap = false
+                    }
+                }
                 bubble.animation()
                 bubble.addTarget(self, action: #selector(bubblePressed), for: .touchUpInside)
+                bubble.frame = CGRect(x: xPosition, y: yPosition, width: 50, height: 50)
+                bubble.layer.cornerRadius = 0.5 * bubble.bounds.size.width
                 self.view.addSubview(bubble)
                 currentBubblesOnScreen += 1
             } else {
@@ -74,8 +89,17 @@ class GameViewController: UIViewController {
         }
     }
     
-    @objc func ifBubbleOverlap() -> Bool {
-        
+    @objc func ifOverlap(x xPos: CGFloat, y yPos: CGFloat) -> Bool {
+        for button in self.view.subviews {
+            let buttonXLeftPosition: CGFloat = button.frame.origin.x
+            let buttonXRightPosition: CGFloat = button.frame.origin.x + 50
+            let buttonYTopPosition: CGFloat = button.frame.origin.y
+            let buttonYBottomPosition: CGFloat = button.frame.origin.y + 50
+            
+            if (xPos >= buttonXLeftPosition - 50 && xPos <= buttonXRightPosition + 50) && (yPos >= buttonYTopPosition - 50 && yPos <= buttonYBottomPosition + 50) {
+                return true
+            }
+        }
         return false
     }
     

@@ -10,8 +10,6 @@ import UIKit
 
 class Bubble: UIButton {
     
-    let xPosition = Int.random(in: 20...Int(UIScreen.main.bounds.size.width * 0.7))
-    let yPosition = Int.random(in: 130...Int(UIScreen.main.bounds.size.height * 0.8))
     let randomInt = Int.random(in: 0...100)
     
     override init(frame: CGRect) {
@@ -28,8 +26,8 @@ class Bubble: UIButton {
             default:
                 self.backgroundColor = .black
         }
-        self.frame = CGRect(x: xPosition, y: yPosition, width: 80, height: 80)
-        self.layer.cornerRadius = 0.5 * self.bounds.size.width
+        
+        
     }
     
 

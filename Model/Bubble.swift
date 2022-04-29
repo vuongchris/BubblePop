@@ -35,7 +35,7 @@ class Bubble: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
+    // Adds an animation to the bubble
     func animation() {
         let springAnimation = CASpringAnimation(keyPath: "transform.scale")
         springAnimation.duration = 0.6
@@ -48,6 +48,7 @@ class Bubble: UIButton {
         layer.add(springAnimation, forKey: nil)
     }
     
+    // Adds a flash to the bubble
     func flash() {
         
         let flash = CABasicAnimation(keyPath: "opacity")

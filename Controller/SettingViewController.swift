@@ -22,7 +22,8 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         self.nameTextField.delegate = self
         
     }
-
+    
+    // Prepares user selection for the GameViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToGame" {
             let VC = segue.destination as! GameViewController
@@ -32,11 +33,12 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Value below the slider changes when the user interacts with the slider
     @IBAction func timeSliderValueChanged(_ sender: Any) {
         timeSliderValue.text = String(Int(timeSlider.value))
     }
     
-    
+    // Value below the slider changes when the user interacts with the slider
     @IBAction func numOfBubblesSliderValueChanged(_ sender: Any) {
         numOfBubblesValue.text = String(Int(numOfBubblesSlider.value))
     }

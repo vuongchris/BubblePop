@@ -44,6 +44,7 @@ class HighScoreViewController: UIViewController {
         }
     }
     
+    // Writes high scores into user defaults
     func writeHighScores() {
         let defaults = UserDefaults.standard
         
@@ -66,20 +67,13 @@ class HighScoreViewController: UIViewController {
             return []
         }
     }
-
+    
+    // Button to return to the main page
     @IBAction func returnToMainPage(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
-extension HighScoreViewController: UITableViewDelegate {
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
-     */
-    
-}
 
 extension HighScoreViewController: UITableViewDataSource {
     

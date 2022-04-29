@@ -197,6 +197,7 @@ class GameViewController: UIViewController {
         updateCurrentScore(sender)
     }
     
+    // Finds the highest score and displays it on the game screen
     @objc func highScoreValue() -> String {
         let highScoreVC = HighScoreViewController()
         var array = highScoreVC.readHighScores()

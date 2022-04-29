@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.countingDown()
-            self.removeRandomBubbles(bubbles: self.numOfBubbles)
+            self.removeRandomBubbles(bubbles: self.currentBubblesOnScreen)
             self.generateBubble(bubbles: self.numOfBubbles)
         }
         
@@ -62,7 +62,7 @@ class GameViewController: UIViewController {
     
     // Generates a random number of bubbles
     @objc func generateBubble(bubbles: Int) {
-        for _ in stride(from: 1, through: Int.random(in: 2...bubbles), by: 1) {
+        for _ in stride(from: 0, to: Int.random(in: 1...bubbles), by: 1) {
             if currentBubblesOnScreen < numOfBubbles {
                 let bubble = Bubble()
                 var xPosition = CGFloat.random(in: 10...CGFloat(UIScreen.main.bounds.size.width * 0.8))
@@ -70,8 +70,8 @@ class GameViewController: UIViewController {
                 bubbleOverlap = true
                 while bubbleOverlap != false {
                     if ifOverlap(x: xPosition, y: yPosition) {
-                        xPosition = CGFloat.random(in: 10...CGFloat(UIScreen.main.bounds.size.width * 0.7))
-                        yPosition = CGFloat.random(in: 130...CGFloat(UIScreen.main.bounds.size.height * 0.8))
+                        xPosition = CGFloat.random(in: 10...CGFloat(UIScreen.main.bounds.size.width * 0.8))
+                        yPosition = CGFloat.random(in: 130...CGFloat(UIScreen.main.bounds.size.height * 0.9))
                         bubbleOverlap = true
                     } else {
                         bubbleOverlap = false
@@ -83,12 +83,14 @@ class GameViewController: UIViewController {
                 bubble.layer.cornerRadius = 0.5 * bubble.bounds.size.width
                 self.view.addSubview(bubble)
                 currentBubblesOnScreen += 1
+                print(currentBubblesOnScreen)
             } else {
                 break
             }
         }
     }
     
+    // Checks if a bubble overlaps with another bubble
     @objc func ifOverlap(x xPos: CGFloat, y yPos: CGFloat) -> Bool {
         for button in self.view.subviews {
             let buttonXLeftPosition: CGFloat = button.frame.origin.x
@@ -112,11 +114,12 @@ class GameViewController: UIViewController {
                 if button.isKind(of: UIButton.self) {
                     button.removeFromSuperview()
                     currentBubblesOnScreen -= 1
+                    print(currentBubblesOnScreen)
                 }
+                cycleCount += 1
             } else {
                 break
             }
-            cycleCount += 1
         }
     }
     
@@ -190,6 +193,7 @@ class GameViewController: UIViewController {
     @IBAction func bubblePressed(_ sender: UIButton) {
         // remove pressed bubble from view
         sender.removeFromSuperview()
+        currentBubblesOnScreen -= 1
         updateCurrentScore(sender)
     }
     
